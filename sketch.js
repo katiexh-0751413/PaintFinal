@@ -26,7 +26,7 @@ function setup() {
 
   // Add a "Save" button to the menu bar
   saveButton = createButton("Save");
-  saveButton.position(width-55, 20);
+  saveButton.position(width-65, 20);
   saveButton.class("button");
   saveButton.mousePressed(function() {
      // Create a new graphics object to hold the portion of the canvas we want to save
@@ -41,7 +41,7 @@ function setup() {
 
   // Add a "Clear" button to the menu bar
   clearButton = createButton("Clear");
-  clearButton.position(10, 5);
+  clearButton.position(10, 20);
   clearButton.class("button");
   clearButton.mousePressed(function() {
     // Display a confirmation popup
@@ -55,7 +55,7 @@ function setup() {
 
   // Add an "Undo" button to the menu bar
   undoButton = createButton("Undo");
-  undoButton.position(10, 35);
+  undoButton.position(100, 20);
   undoButton.class("button");
   undoButton.mousePressed(function() {
     undoToPreviousState();
@@ -63,7 +63,7 @@ function setup() {
 
   // Add an "Eraser" button to the menu bar
   eraserButton = createButton("Eraser");
-  eraserButton.position(85, 5);
+  eraserButton.position(205, 5);
   eraserButton.class("button");
   eraserButton.mousePressed(function() {
     eraserMode = true;
@@ -71,14 +71,14 @@ function setup() {
 
   // Add a "Pen" button to the menu bar
   penButton = createButton("Pen");
-  penButton.position(155, 5);
+  penButton.position(275, 5);
   penButton.class("button");
   penButton.mousePressed(function() {
       eraserMode = false;
     });
 
   // Add a color panel to the menu bar
-  let startX = 220;
+  let startX = 350;
   let circleSize = 20;
 
   // Draw the color circles
@@ -109,22 +109,26 @@ function setup() {
 
   // Add a size slider to the menu bar
   slider = createSlider(1, 50, slider);
-  slider.position(75, 30);
+  slider.position(195, 30);
   textSize(8);
-  text("Size", 147, 52);
+  text("Size", 265, 52);
 
   // Adding a color picker
   colorPicker = createColorPicker(c);
-  colorPicker.position(550, 10);
+  colorPicker.position(width-170, 10);
   colorPicker.class("button");
   colorPicker.input(handleColorInput);
   textSize(10);
-  text("Color Picker", 575, 50);
+  text("Color Picker", width-145, 50);
 
-  // Draw line between clear button and slider
-  let lineX = (clearButton.position().x + slider.position().x + clearButton.width) / 2;
+  // Draw line between clear button and undo button
+  let lineX = (clearButton.position().x + undoButton.position().x + clearButton.width) / 2;
   stroke(200);
   strokeWeight(1);
+  line(lineX, 10, lineX, 50);
+
+  // Draw line between undo button and slider
+  lineX = (undoButton.position().x + slider.position().x + undoButton.width) / 2;
   line(lineX, 10, lineX, 50);
 
   // Draw line between slider and colors
@@ -136,7 +140,7 @@ function setup() {
   line(lineX, 10, lineX, 50);
 
   // Draw line between color picker and save button
-  lineX = (colorPicker.position().x + saveButton.position().x) / 2;
+  lineX = (colorPicker.position().x + saveButton.position().x + colorPicker.width) / 2;
   line(lineX, 10, lineX, 50);
 }
 

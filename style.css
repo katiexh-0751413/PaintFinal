@@ -3,7 +3,10 @@ html, body {
   padding: 0;
   overflow: hidden;
 }
-
 canvas {
   display: block;
+}
+
+.button, .menu {
+  box-shadow: 0 0 2px black;
 }
