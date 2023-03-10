@@ -78,7 +78,7 @@ function setup() {
     });
 
   // Add a color panel to the menu bar
-  let startX = 350;
+  let startX = width-495;
   let circleSize = 20;
 
   // Draw the color circles
